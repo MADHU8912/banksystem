@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Bank Login</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<h1>ADMIN LOGIN</h1>
+
+<input id="user" placeholder="username">
+<input id="pass" placeholder="password">
+
+<button onclick="login()">Login</button>
+
+<script>
+
+function login(){
+
+let u = document.getElementById("user").value
+let p = document.getElementById("pass").value
+
+if(u=="admin" && p=="1234"){
+location="admin.html"
+}else{
+alert("Wrong Login")
+}
+
+}
+
+</script>
+
+</body>
+</html>
