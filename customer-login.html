@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Customer Login</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="portal-bg">
+
+  <div class="login-card">
+    <h1>Customer Login</h1>
+
+    <input id="custUser" placeholder="Customer Username">
+    <input id="custPass" type="password" placeholder="Password">
+
+    <button onclick="customerLogin()">Login</button>
+    <br><br>
+    <a href="index.html">Back</a>
+  </div>
+
+  <script>
+    function customerLogin() {
+      let u = document.getElementById("custUser").value;
+      let p = document.getElementById("custPass").value;
+
+      if (u === "abhi" && p === "1111") {
+        localStorage.setItem("customerName", "abhi");
+        window.location = "customer-dashboard.html";
+      } else if (u === "nikhil" && p === "2222") {
+        localStorage.setItem("customerName", "nikhil");
+        window.location = "customer-dashboard.html";
+      } else {
+        alert("Wrong Customer Login");
+      }
+    }
+  </script>
+
+</body>
+</html>

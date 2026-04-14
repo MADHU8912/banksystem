@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Customer Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body onload="loadCustomerDashboard()">
+
+  <div class="dashboard">
+    <div class="sidebar">
+      <h2>Customer Panel</h2>
+      <p id="custName"></p>
+      <a href="index.html" class="logout-btn">Logout</a>
+    </div>
+
+    <div class="main-panel">
+      <div class="top-tabs">
+        <div class="tab active">My Account</div>
+        <div class="tab">Transactions</div>
+        <div class="tab">Offers</div>
+        <div class="tab">Support</div>
+      </div>
+
+      <div class="content-grid">
+        <div class="card">
+          <h3>Account Details</h3>
+          <div id="customerDetails"></div>
+        </div>
+
+        <div class="card">
+          <h3>Quick Actions</h3>
+          <button>View Balance</button>
+          <button>Mini Statement</button>
+          <button>Download Passbook</button>
+        </div>
+
+        <div class="card">
+          <h3>Offers</h3>
+          <p>Personal Loan Offer</p>
+          <p>Credit Card Upgrade</p>
+        </div>
+
+        <div class="card">
+          <h3>Recent Status</h3>
+          <p>Last Login: Today</p>
+          <p>Security: Protected</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    async function loadCustomerDashboard() {
+      const name = localStorage.getItem("customerName");
+      document.getElementById("custName").innerText = "Welcome: " + name;
+
+      let res = await fetch("/accounts");
+      let data = await res.json();
+
+      if (data[name]) {
+        document.getElementById("customerDetails").innerHTML = `
+          <p><b>Name:</b> ${name}</p>
+          <p><b>Account No:</b> ${data[name].acc}</p>
+          <p><b>Balance:</b> ₹${data[name].balance}</p>
+        `;
+      }
+    }
+  </script>
+
+</body>
+</html>

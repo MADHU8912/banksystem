@@ -1,35 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Bank Login</title>
-<link rel="stylesheet" href="style.css">
+  <title>Bank Portal</title>
+  <link rel="stylesheet" href="style.css">
 </head>
+<body class="portal-bg">
 
-<body>
+  <div class="login-select-card">
+    <h1>Bank Web Portal</h1>
+    <p>Select Login Type</p>
 
-<h1>ADMIN LOGIN</h1>
-
-<input id="user" placeholder="username">
-<input id="pass" placeholder="password">
-
-<button onclick="login()">Login</button>
-
-<script>
-
-function login(){
-
-let u = document.getElementById("user").value
-let p = document.getElementById("pass").value
-
-if(u=="admin" && p=="1234"){
-location="admin.html"
-}else{
-alert("Wrong Login")
-}
-
-}
-
-</script>
+    <div class="login-buttons">
+      <a href="employee-login.html" class="big-btn">Bank Employee Login</a>
+      <a href="customer-login.html" class="big-btn blue-btn">Customer Login</a>
+    </div>
+  </div>
 
 </body>
 </html>

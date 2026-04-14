@@ -1,17 +1,113 @@
-body{
-font-family:Arial;
-text-align:center;
-background:#f2f2f2;
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f7fb;
 }
 
-input{
-padding:10px;
-margin:5px;
+.portal-bg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-button{
-padding:10px;
-background:green;
-color:white;
-border:none;
+.login-card, .login-select-card {
+  background: white;
+  padding: 30px;
+  width: 350px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+  text-align: center;
+}
+
+input {
+  width: 90%;
+  padding: 12px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+button, .big-btn, .logout-btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 6px;
+  background: #0b57d0;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.blue-btn {
+  background: #1a73e8;
+}
+
+.login-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.dashboard {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 240px;
+  background: white;
+  padding: 20px;
+  border-right: 1px solid #ddd;
+}
+
+.main-panel {
+  flex: 1;
+  padding: 20px;
+}
+
+.top-tabs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.tab {
+  background: white;
+  padding: 14px;
+  text-align: center;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+}
+
+.tab.active {
+  border-top: 4px solid #0b57d0;
+  font-weight: bold;
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.account-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.account-table th, .account-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
 }

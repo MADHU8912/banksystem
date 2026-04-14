@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Employee Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
+</head>
+<body onload="loadAccounts()">
+
+  <div class="dashboard">
+    <div class="sidebar">
+      <h2>Bank Employee</h2>
+      <p>Role: Service Desk</p>
+      <p>Status: Active</p>
+      <p>Department: Banking</p>
+      <a href="index.html" class="logout-btn">Logout</a>
+    </div>
+
+    <div class="main-panel">
+      <div class="top-tabs">
+        <div class="tab active">Relationship Overview</div>
+        <div class="tab">Customer Requests</div>
+        <div class="tab">Offers</div>
+        <div class="tab">Communication</div>
+      </div>
+
+      <div class="content-grid">
+        <div class="card">
+          <h3>Accounts Overview</h3>
+          <div id="accounts"></div>
+        </div>
+
+        <div class="card">
+          <h3>Fund Transfer</h3>
+          <input id="from" placeholder="From (abhi)">
+          <input id="to" placeholder="To (nikhil)">
+          <input id="amount" placeholder="Amount">
+          <button onclick="transfer()">Transfer</button>
+        </div>
+
+        <div class="card">
+          <h3>Employee Actions</h3>
+          <p>Approve requests</p>
+          <p>Reactivate services</p>
+          <p>View customer history</p>
+          <p>Track transactions</p>
+        </div>
+
+        <div class="card">
+          <h3>Notifications</h3>
+          <p>Pending KYC review</p>
+          <p>2 fund requests waiting</p>
+          <p>1 account flagged</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
