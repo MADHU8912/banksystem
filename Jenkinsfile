@@ -6,15 +6,9 @@ pipeline {
     }
 
     stages {
-        stage('Clone') {
+        stage('Clone Code') {
             steps {
                 checkout scm
-            }
-        }
-
-        stage('Install Dependencies') {
-            steps {
-                bat 'npm install'
             }
         }
 
@@ -24,16 +18,31 @@ pipeline {
             }
         }
 
-        stage('Push Docker Image') {
+        stage('Login Docker Hub') {
             steps {
                 withCredentials([usernamePassword(
-                    credentialsId: 'nikhilabba12/******',
+                    credentialsId: 'dockerhub-credentials',
                     usernameVariable: 'DOCKER_USER',
                     passwordVariable: 'DOCKER_PASS'
                 )]) {
-                    bat 'echo %DOCKER_PASS% | docker login -u %nikhilabba12% --password-stdin'
-                    bat 'docker push %IMAGE_NAME%'
+                    bat 'echo %DOCKER_PASS% | docker login -u %DOCKER_USER% --password-stdin'
                 }
+            }
+        }
+
+        stage('Push Docker Image') {
+            steps {
+                bat 'docker push %IMAGE_NAME%'
+            }
+        }
+
+        stage('Run Container') {
+            steps {
+                bat '''
+                docker rm -f bank-system-container
+                if %ERRORLEVEL% NEQ 0 echo No old container found
+                docker run -d -p 3000:3000 --name bank-system-container %IMAGE_NAME%
+                '''
             }
         }
     }
