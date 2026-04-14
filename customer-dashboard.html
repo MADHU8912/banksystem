@@ -3,6 +3,7 @@
 <head>
   <title>Customer Dashboard</title>
   <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
 </head>
 <body onload="loadCustomerDashboard()">
 
@@ -15,57 +16,47 @@
 
     <div class="main-panel">
       <div class="top-tabs">
-        <div class="tab active">My Account</div>
-        <div class="tab">Transactions</div>
+        <div class="tab active">Transactions</div>
         <div class="tab">Offers</div>
         <div class="tab">Support</div>
+        <div class="tab">Account Detail</div>
       </div>
 
       <div class="content-grid">
         <div class="card">
-          <h3>Account Details</h3>
+          <h3>Account Detail</h3>
           <div id="customerDetails"></div>
         </div>
 
         <div class="card">
           <h3>Quick Actions</h3>
-          <button>View Balance</button>
-          <button>Mini Statement</button>
-          <button>Download Passbook</button>
+          <button onclick="viewBalance()">View Balance</button>
+          <button onclick="miniStatement()">Mini Statement</button>
+          <button onclick="downloadPassbook()">Download Passbook</button>
+
+          <hr><br>
+
+          <h4>Add Self Money to Account</h4>
+          <input id="depositAmount" placeholder="Enter Amount">
+          <button onclick="depositMoney()">Add Money</button>
         </div>
 
         <div class="card">
           <h3>Offers</h3>
           <p>Personal Loan Offer</p>
           <p>Credit Card Upgrade</p>
+          <p>Cashback Offer</p>
         </div>
 
         <div class="card">
-          <h3>Recent Status</h3>
-          <p>Last Login: Today</p>
-          <p>Security: Protected</p>
+          <h3>Support</h3>
+          <p>Customer Care: 1800-000-123</p>
+          <p>Email: support@bank.com</p>
+          <p>Branch Help Available</p>
         </div>
       </div>
     </div>
   </div>
-
-  <script>
-    async function loadCustomerDashboard() {
-      const name = localStorage.getItem("customerName");
-      document.getElementById("custName").innerText = "Welcome: " + name;
-
-      let res = await fetch("/accounts");
-      let data = await res.json();
-
-      if (data[name]) {
-        document.getElementById("customerDetails").innerHTML = `
-          <p><b>Name:</b> ${name}</p>
-          <p><b>Account No:</b> ${data[name].acc}</p>
-          <p><b>Balance:</b> ₹${data[name].balance}</p>
-        `;
-      }
-    }
-  </script>
 
 </body>
 </html>
